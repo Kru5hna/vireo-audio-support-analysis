@@ -19,8 +19,8 @@ Our forensic data investigation and machine learning analysis demonstrated that 
 ====================================================================================================
 THE HEADCOUNT VERDICT & BUSINESS GOAL NUMBER
 ====================================================================================================
->> "Do NOT hire into Billing. Cut Billing intake misrouting from 41.5% to under 5.0% and eliminate 
-    dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational 
+>> "Do NOT hire into Billing. Cut Billing intake misrouting from 31.4% (core) / 33.5% (all-time) to under 5.0% 
+    and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational 
     savings, while avoiding an unnecessary Rs 9,00,000 per year in unneeded Billing headcount." <<
 ====================================================================================================
 ```
@@ -129,7 +129,7 @@ Evaluated on a stratified random sample of **200 tickets** ($N=200$) drawn acros
 | **Overall Accuracy** | 51.50% (103/200) | **88.00% (176/200)** | **+36.50%** |
 | **95% Confidence Interval** | [44.6%, 58.4%] | **[82.77%, 91.80%]** | Margin: $\pm 4.52\%$ |
 | **Error Rate** | 48.50% | **12.00%** | **-36.50%** |
-| **Macro F1-Score** | 0.44 | **0.82** | **+0.38** |
+| **Macro F1-Score** | 0.50 | **0.82** | **+0.32** |
 | **Uninformative 'Other' Bucket** | 1,622 tickets (13.8%) | **0 tickets (0.0%)** | 100% Resolved |
 
 ---

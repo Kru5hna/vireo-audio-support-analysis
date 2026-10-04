@@ -73,6 +73,7 @@ def run_evaluation(labels_csv="eval/labels_done.csv", report_md="eval/eval_repor
     # Macro and Weighted Averages
     macro_p, macro_r, macro_f1, _ = precision_recall_fscore_support(y_true, y_pred, average='macro', zero_division=0)
     weighted_p, weighted_r, weighted_f1, _ = precision_recall_fscore_support(y_true, y_pred, average='weighted', zero_division=0)
+    _, _, old_macro_f1, _ = precision_recall_fscore_support(y_true, y_old, average='macro', zero_division=0)
 
     # 3. Confusion Matrix
     cm = confusion_matrix(y_true, y_pred, labels=all_categories)
@@ -118,8 +119,9 @@ def run_evaluation(labels_csv="eval/labels_done.csv", report_md="eval/eval_repor
         f.write("|---|---|---|---|\n")
         f.write(f"| **Overall Accuracy** | {acc_old:.2%} | **{acc_model:.2%}** | **+{(acc_model - acc_old):.2%}** |\n")
         f.write(f"| **Error Rate** | {1-acc_old:.2%} | **{1-acc_model:.2%}** | **-{(acc_old - acc_model):.2%}** |\n")
-        f.write(f"| **Macro F1-Score** | 0.44 | **{macro_f1:.2f}** | **+{macro_f1 - 0.44:.2f}** |\n")
+        f.write(f"| **Macro F1-Score** | {old_macro_f1:.2f} | **{macro_f1:.2f}** | **+{macro_f1 - old_macro_f1:.2f}** |\n")
         f.write(f"| **Opaque 'Other' Bucket** | 13.77% | **0.00%** | **-13.77% (100% resolved)** |\n\n")
+        f.write("> **Evaluation Methodology & Label Disclosure**: The 200-ticket ground-truth evaluation set was generated via AI-assisted annotation during development. As detailed transparently in `LIMITATIONS.md`, independent double-blind human annotation should be conducted prior to production dispatch to avoid circular validation bias.\n\n")
 
         f.write("## 2. Per-Category Performance\n\n")
         f.write("| Category | Precision | Recall | F1-Score | Sample Support |\n")

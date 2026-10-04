@@ -14,8 +14,10 @@
 |---|---|---|---|
 | **Overall Accuracy** | 51.50% | **88.00%** | **+36.50%** |
 | **Error Rate** | 48.50% | **12.00%** | **--36.50%** |
-| **Macro F1-Score** | 0.44 | **0.82** | **+0.38** |
+| **Macro F1-Score** | 0.50 | **0.82** | **+0.32** |
 | **Opaque 'Other' Bucket** | 13.77% | **0.00%** | **-13.77% (100% resolved)** |
+
+> **Evaluation Methodology & Label Disclosure**: The 200-ticket ground-truth evaluation set was generated via AI-assisted annotation during development. As detailed transparently in `LIMITATIONS.md`, independent double-blind human annotation should be conducted prior to production dispatch to avoid circular validation bias.
 
 ## 2. Per-Category Performance
 

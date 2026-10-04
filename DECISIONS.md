@@ -118,6 +118,6 @@ This log records every ambiguity encountered, the decision taken, and the ration
   1. Internal transfer elimination: 632 transfers @ Rs 305 = Rs 32,127/quarter.
   2. First-response SLA breach penalty savings: 477 breaches @ Rs 350 credit = Rs 27,825/quarter.
   3. Double-dipping leakage prevention: 140 dual refund/replacement orders = Rs 75,596/quarter.
-- **Result**: *"Cut Billing intake misrouting from 41.5% to under 5.0% and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational savings, while avoiding an unnecessary Rs 9,00,000/year headcount expenditure in Billing."*
+- **Result**: *"Cut Billing intake misrouting from 31.4% (core queue level) to under 5.0% and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational savings, while avoiding an unnecessary Rs 9,00,000/year headcount expenditure in Billing."*
 
 

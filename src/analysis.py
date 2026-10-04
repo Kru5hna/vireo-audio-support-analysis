@@ -156,8 +156,9 @@ def run_full_analysis():
     print(f"3. Stopped Double-Dip Leakage: Rs {savings['Double_Dipping_Leakage_Quarterly_INR']:,.2f} / quarter")
     print(f"-> TOTAL DIRECT PROCESS SAVINGS: Rs {savings['Total_Quarterly_Process_Savings_INR']:,.2f} / quarter (Rs {savings['Total_Annual_Process_Savings_INR']:,.2f} / year)")
     print(f"-> CAPITAL EXPENDITURE AVOIDED: Rs {savings['Avoided_Billing_Hire_Cost_Annual_INR']:,.2f} / year (2 unnecessary hires in Billing)")
-    print("\nFORMAL STATEMENT:")
-    print(">> 'Cut Billing intake misrouting from 41.5% to under 5.0% and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational savings, while avoiding Rs 9,00,000 per year in unneeded Billing headcount.' <<")
+    curr_misroute = savings['Current_Billing_Misrouting_Rate']
+    print(f">> 'Cut Billing intake misrouting from {curr_misroute} (31.4% core / 33.5% all-time) to under 5.0% and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational savings, while avoiding Rs 9,00,000 per year in unneeded Billing headcount.' <<")
+    print("(Note on metrics: 31.4% is queue-level misrouting in the core period, 33.5% across full dataset; 41.5% refers to the legacy category intake text tag error rate).")
     print("="*65)
 
     return rule_df, savings

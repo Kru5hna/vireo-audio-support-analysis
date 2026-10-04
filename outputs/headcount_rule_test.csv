@@ -1,8 +1,0 @@
-Team,Agent_Headcount,Intake_Assigned_Volume,Assigned_Share,Actually_Resolved_Volume,Resolved_Share,Tickets_Per_Agent,Median_Resolution_Hours,SLA_Breach_Rate_Pct,Transfers_Generated
-Chat Frontline,15,3030,26.0%,3078,26.4%,205.2,0.58,7.46,245
-Logistics,5,1905,16.4%,2574,22.1%,514.8,26.03,9.66,112
-Billing,4,2425,20.8%,1798,15.4%,449.5,1.22,19.67,632
-Email Frontline,7,1807,15.5%,1658,14.2%,236.9,2.75,10.96,139
-Returns Desk,3,1049,9.0%,1117,9.6%,372.3,32.38,10.77,46
-Voice Frontline,4,900,7.7%,766,6.6%,191.5,0.93,5.67,82
-Escalations & Warranty,6,525,4.5%,650,5.6%,108.3,122.42,8.19,43

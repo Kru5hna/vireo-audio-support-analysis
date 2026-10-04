@@ -13,12 +13,12 @@
 ---
 
 ### THE NUMBER
-**Cut Billing intake misrouting from 41.5% to under 5.0% and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational savings, while avoiding an unnecessary Rs 9,00,000 per year in unneeded Billing headcount.**
+**Cut Billing intake misrouting from 31.4% (core queue level) to under 5.0% and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational savings, while avoiding an unnecessary Rs 9,00,000 per year in unneeded Billing headcount.**
 
 ---
 
 ### WHAT WE FOUND
-- **The False Billing Epidemic (795 Hand-offs)**: 41.5% of tickets tagged as Billing (and 795 tickets resolved by Logistics) were actually customers asking where their delivery was after paying. The bot saw the word "paid" and dumped delivery issues onto Billing.
+- **The False Billing Epidemic (795 Hand-offs)**: 31.4% of tickets assigned to Billing (33.5% all-time; 41.5% of tickets tagged with the legacy Billing text label) were actually delivery issues where customers asked where their shipment was after paying. The bot saw the word "paid" and dumped delivery issues onto Billing.
 - **Logistics is Drowning, Not Billing**: Logistics resolved **2,574 tickets** with only 5 agents (515 tickets/agent) and takes **26.03 hours** to resolve them. True Billing tickets take only **1.22 hours** (40 minutes median).
 - **The Hidden Cash Leaks (Rs 5.42 Lakhs/Year)**: Bouncing tickets between Billing and Logistics cost **Rs 1.93 Lakhs** in internal transfer penalties (Rs 305/transfer), triggered **Rs 1.67 Lakhs** in late-response store credits (Rs 350 credit), and **140 orders received both a refund AND a free replacement**, leaking **Rs 4.54 Lakhs**.
 

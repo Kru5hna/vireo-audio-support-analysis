@@ -193,6 +193,12 @@ def run_classifier(input_csv="outputs/tickets_enriched.csv", output_csv="outputs
 
     l2_clf = Tier2TFIDFClassifier()
     l2_clf.fit(train_texts, train_labels)
+    try:
+        import joblib
+        joblib.dump(l2_clf, "outputs/l2_classifier.joblib")
+        print("Layer 2 model successfully serialized to outputs/l2_classifier.joblib")
+    except Exception as e:
+        print(f"Model serialization note: {e}")
 
     # Step 3: Classify remaining tickets with Layer 2
     unmatched_indices = df[~rule_mask].index

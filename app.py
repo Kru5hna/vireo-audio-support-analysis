@@ -39,6 +39,27 @@ def load_data():
 
 df = load_data()
 
+@st.cache_resource
+def get_l2_classifier():
+    import joblib
+    model_path = "outputs/l2_classifier.joblib"
+    if os.path.exists(model_path):
+        try:
+            return joblib.load(model_path)
+        except Exception:
+            pass
+    # Fallback to fitting from dataset
+    df_data = load_data()
+    if df_data is not None and 'predicted_category' in df_data.columns:
+        clf = Tier2TFIDFClassifier()
+        clean_notes = df_data['agent_notes'].apply(normalize_text)
+        clean_custs = df_data['customer_message'].apply(normalize_text)
+        train_texts = "note: " + clean_notes + " " + clean_notes + " | cust: " + clean_custs
+        train_labels = df_data['predicted_category']
+        clf.fit(train_texts, train_labels)
+        return clf
+    return None
+
 # Sidebar Navigation
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to:", [
@@ -71,7 +92,7 @@ if page == "1. Executive Summary & Business Goal":
 
     st.success(
         "**THE BUSINESS GOAL NUMBER:**\n\n"
-        "> *'Cut Billing intake misrouting from 41.5% to under 5.0% and eliminate dual refund-replacements, "
+        "> *'Cut Billing intake misrouting from 31.4% (core queue level) to under 5.0% and eliminate dual refund-replacements, "
         "worth approximately **Rs 1,35,500 per quarter** in direct operational savings, "
         "while avoiding **Rs 9,00,000 per year** in unneeded Billing headcount.'*"
     )
@@ -169,10 +190,19 @@ elif page == "3. Live Classification Sandbox":
             cat, conf, rat = evaluate_rules(note_input, cust_input)
             layer = "Layer 1 (Deterministic Rules)"
             if not cat:
-                cat = "Delivery & Shipping"  # Fallback preview
-                conf = 0.74
-                rat = "Layer 2 TF-IDF ML Model prediction"
-                layer = "Layer 2 (TF-IDF ML Fallback)"
+                l2_clf = get_l2_classifier()
+                if l2_clf is not None:
+                    clean_note = normalize_text(note_input)
+                    clean_cust = normalize_text(cust_input)
+                    combined_text = f"note: {clean_note} {clean_note} | cust: {clean_cust}"
+                    cat, conf = l2_clf.predict_one(combined_text)
+                    rat = f"Layer 2 TF-IDF ML Model statistical prediction (Confidence: {conf:.2%})"
+                    layer = "Layer 2 (TF-IDF + Logistic Regression)"
+                else:
+                    cat = "Other / Unclear"
+                    conf = 0.35
+                    rat = "Fallback unclassified"
+                    layer = "Unclassified"
 
             st.success(f"**Predicted Category:** `{cat}`")
             c1, c2 = st.columns(2)

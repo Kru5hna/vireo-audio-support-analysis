@@ -4,7 +4,7 @@
 We built a production-grade, zero-cost, multi-layer AI support triage pipeline (`src/classify.py`) that auto-categorises tickets into 11 business-aligned categories in 5.2 seconds, prioritizing verified agent closing notes over misleading customer intake keywords. It eliminates the 1,622-ticket "Other" catch-all bucket and rectifies the chatbot's false routing of delivery queries into Billing.
 
 **The Business Outcome:**
-> **"Cut Billing intake misrouting from 41.5% to under 5.0% and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational savings, while avoiding an unnecessary Rs 9,00,000 per year in unneeded Billing headcount."**
+> **"Cut Billing intake misrouting from 31.4% (core queue level) to under 5.0% and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational savings, while avoiding an unnecessary Rs 9,00,000 per year in unneeded Billing headcount."**
 
 Computed deterministically via `python src/analysis.py`.
 
@@ -36,10 +36,11 @@ Computed deterministically via `python src/analysis.py`.
 ---
 
 ### 5. What is wrong with what you are handing us? *(can only raise score)*
-1. **Single-Label Constraint:** The classifier forces compound queries (e.g., transit delay + firmware bricking) into a single category.
-2. **Fallback Order Attribution:** 4,017 tickets missing `order_id` were matched on `(customer_id, product_sku)` via minimum date delta; if a customer bought the identical SKU twice within days, order lot-code attribution may be slightly off.
-3. **Legacy Transfer Count Blindspot:** `transfers` was not tracked in Freshdesk (pre-Sept 2025), so pre-migration transfer costs could not be directly tallied.
-4. **Third-Party Courier Latency:** High Logistics handle time (26.03h) is partly caused by external courier delivery tracking, which software alone cannot accelerate. (Full list in `LIMITATIONS.md`).
+1. **Circular Evaluation Risk:** The 200-ticket ground-truth evaluation set was generated with AI assistance during the same iterative development cycle as the classifier. While deterministic rules match explicit agent closing actions (>95% certainty), independent human verification by Vireo agents would likely reflect a true human accuracy of ~80%–84% rather than 88.00%. We recommend double-blind human annotation before production dispatch (see `LIMITATIONS.md` §1).
+2. **Single-Label Constraint:** The classifier forces compound queries (e.g., transit delay + firmware bricking) into a single category.
+3. **Fallback Order Attribution:** 4,017 tickets missing `order_id` were matched on `(customer_id, product_sku)` via minimum date delta; if a customer bought the identical SKU twice within days, order lot-code attribution may be slightly off.
+4. **Legacy Transfer Count Blindspot:** `transfers` was not tracked in Freshdesk (pre-Sept 2025), so pre-migration transfer costs could not be directly tallied.
+5. **Third-Party Courier Latency:** High Logistics handle time (26.03h) is partly caused by external courier delivery tracking, which software alone cannot accelerate. (Full list in `LIMITATIONS.md`).
 
 ---
 

@@ -8,7 +8,7 @@ This script guides the required $\le 3$-minute non-slide walkthrough demonstrati
 - **What to Show on Screen:**  
   Show the GitHub repository / VS Code project root with `src/`, `outputs/`, `eval/`, and `README.md`.
 - **What to Say:**  
-  *"Hi, I’m walking through our AI-assisted support triage tool for Vireo Audio. The tool processes 11,780 support tickets in 5 seconds with zero API cost and 88% accuracy. Our headline business finding directly addresses Head of CX Priya Raman's hiring question: **Do not hire into Billing.** By cutting intake misrouting from 41.5% to under 5% and stopping dual refund-replacements, Vireo can save **Rs 1,35,500 per quarter** in direct waste while avoiding an unneeded **Rs 9 Lakhs per year** in Billing headcount."*
+  *"Hi, I’m walking through our AI-assisted support triage tool for Vireo Audio. The tool processes 11,780 support tickets in 5 seconds with zero API cost and 88% accuracy. Our headline business finding directly addresses Head of CX Priya Raman's hiring question: **Do not hire into Billing.** By cutting intake misrouting from 31.4% to under 5% and stopping dual refund-replacements, Vireo can save **Rs 1,35,500 per quarter** in direct waste while avoiding an unneeded **Rs 9 Lakhs per year** in Billing headcount."*
 
 ---
 
