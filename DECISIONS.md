@@ -70,3 +70,11 @@ This log records every ambiguity encountered, the decision taken, and the ration
 - **Ambiguity / Context**: How to measure whether a ticket went to the wrong team.
 - **Decision**: Define a ticket as **misrouted** whenever `assigned_team != resolving_team`.
 - **Finding**: 2,063 tickets (17.51% of all volume) were misrouted. The single largest misrouting path is **Billing -> Logistics** (795 tickets), proving that the intake bot routinely confuses payment mentions with delivery issues.
+
+---
+
+### Decision 9: Ground Truth Hierarchy (Agent Closing Notes vs. Customer Message)
+- **Ambiguity / Context**: Customers frequently mention payment status when asking about delivery (e.g., *"paid on 19 jun, still waiting for something to show up"*). The intake bot latched onto "paid" and tagged it as Billing & Payments.
+- **Data Finding**: In 1,065 tickets (41.5%) tagged as Billing & Payments, the agent closing note explicitly confirms the issue was a delivery delay or lost shipment. Furthermore, in the 1,622 "Other" tickets, agent notes clearly describe specific resolutions (522 payments, 484 shipments, 123 bluetooth, 113 warranty faults).
+- **Decision**: In text auto-categorization, inspect both the customer message and agent closing notes. When a conflict exists between the customer's opening symptom and the agent's closing resolution, the **Agent Closing Note takes precedence**.
+- **Why**: The agent's note records the actual problem diagnosed and resolved after checking backend systems (PG dashboards, courier AWBs, RMA logs).
