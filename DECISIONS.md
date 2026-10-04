@@ -55,3 +55,18 @@ This log records every ambiguity encountered, the decision taken, and the ration
   - Billing misrouting caused 795 transfers to Logistics, 632 transfers in the new helpdesk alone, and a 20.5% breach rate in Billing.
 - **Decision**: Focus the business goal on **reducing intake misrouting and avoidable transfers from Billing to Logistics**, quantifying the savings across transfer administrative costs (Rs 305/transfer) and breach penalties (Rs 350/breach), alongside stopping the double-dip refund/replacement leakage.
 - **Why**: Directly addresses the root cause of why Priya thought Billing needed hires, resolves Neha's complaint that Logistics is drowning, satisfies Arjun's mandate ("fix a process rather than hire into it"), and saves hard cash.
+
+---
+
+### Decision 7: Fallback Order Matching Strategy
+- **Ambiguity / Context**: 4,017 tickets had missing `order_id` because customers did not quote it during ticket intake.
+- **Guidance in README.txt**: *"customer_id + product_sku is the fallback join."*
+- **Decision**: In `src/attribute_teams.py`, match on `(customer_id, product_sku)` and select the order whose order date is closest to the ticket creation date.
+- **Result**: Achieved 100% order resolution (0 unmatched tickets: 7,763 direct matches + 4,017 fallback matches).
+
+---
+
+### Decision 8: Defining and Measuring Misrouting
+- **Ambiguity / Context**: How to measure whether a ticket went to the wrong team.
+- **Decision**: Define a ticket as **misrouted** whenever `assigned_team != resolving_team`.
+- **Finding**: 2,063 tickets (17.51% of all volume) were misrouted. The single largest misrouting path is **Billing -> Logistics** (795 tickets), proving that the intake bot routinely confuses payment mentions with delivery issues.
