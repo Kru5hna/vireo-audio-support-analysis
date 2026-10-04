@@ -103,4 +103,21 @@ This log records every ambiguity encountered, the decision taken, and the ration
 - **Decision**: Draw a stratified random sample of 200 tickets (seed 42) stratified across all channels and categories. Generate a blind labelling sheet (`eval/labelling_sheet.csv`) hiding model predictions to eliminate confirmation bias. Annotate ground truth in `eval/labels_done.csv` using strict multi-field verification (customer symptom + agent closing diagnosis).
 - **Result**: Demonstrated 88.00% accuracy (95% Wilson CI: [82.77%, 91.80%]) vs 51.50% for the old intake tags (+36.50% net improvement).
 
+---
+
+### Decision 13: Pushing Back on Priya's "Most Volume Gets Two Hires" Rule
+- **Ambiguity / Context**: Priya assumed Billing is the largest team (22% volume) and planned to assign the two new hires there.
+- **Data Finding**: Billing only resolved 15.4% of actual tickets (449.5 tickets/agent, 1.22h median resolution). Logistics resolved 22.1% of tickets (514.8 tickets/agent, 26.03h resolution time) while enduring 795 transfers from Billing.
+- **Decision**: Formally push back on the rule. Volume is not workload. Adding headcount to Billing would waste Rs 9.00 Lakhs/year on an already adequately staffed queue. If headcount is added anywhere, Logistics is the only team with acute operational strain; however, fixing intake routing eliminates the artificial surge first.
+
+---
+
+### Decision 14: Formal Business Goal Formulation and Cost Arithmetic
+- **Ambiguity / Context**: Selecting a quantifiable business target expressed in percentages and rupees.
+- **Decision**: Combine three policy-costed operational savings lines:
+  1. Internal transfer elimination: 632 transfers @ Rs 305 = Rs 32,127/quarter.
+  2. First-response SLA breach penalty savings: 477 breaches @ Rs 350 credit = Rs 27,825/quarter.
+  3. Double-dipping leakage prevention: 140 dual refund/replacement orders = Rs 75,596/quarter.
+- **Result**: *"Cut Billing intake misrouting from 41.5% to under 5.0% and eliminate dual refund-replacements, worth approximately Rs 1,35,500 per quarter in direct operational savings, while avoiding an unnecessary Rs 9,00,000/year headcount expenditure in Billing."*
+
 
