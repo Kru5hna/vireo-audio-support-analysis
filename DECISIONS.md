@@ -96,3 +96,11 @@ This log records every ambiguity encountered, the decision taken, and the ration
   - **Layer 3**: Optional LLM API fallback reserved only for ambiguous cases if an API key is provided.
 - **Why**: Guarantees fast, reproducible, 100% offline execution in 5.2 seconds with Rs 0.00 / $0.00 API expenditure.
 
+---
+
+### Decision 12: Stratified Sampling and Blind Evaluation Methodology
+- **Ambiguity / Context**: How to evaluate the model without confirmation bias and what sample size to use.
+- **Decision**: Draw a stratified random sample of 200 tickets (seed 42) stratified across all channels and categories. Generate a blind labelling sheet (`eval/labelling_sheet.csv`) hiding model predictions to eliminate confirmation bias. Annotate ground truth in `eval/labels_done.csv` using strict multi-field verification (customer symptom + agent closing diagnosis).
+- **Result**: Demonstrated 88.00% accuracy (95% Wilson CI: [82.77%, 91.80%]) vs 51.50% for the old intake tags (+36.50% net improvement).
+
+
