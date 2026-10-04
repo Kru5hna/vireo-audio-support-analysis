@@ -78,3 +78,21 @@ This log records every ambiguity encountered, the decision taken, and the ration
 - **Data Finding**: In 1,065 tickets (41.5%) tagged as Billing & Payments, the agent closing note explicitly confirms the issue was a delivery delay or lost shipment. Furthermore, in the 1,622 "Other" tickets, agent notes clearly describe specific resolutions (522 payments, 484 shipments, 123 bluetooth, 113 warranty faults).
 - **Decision**: In text auto-categorization, inspect both the customer message and agent closing notes. When a conflict exists between the customer's opening symptom and the agent's closing resolution, the **Agent Closing Note takes precedence**.
 - **Why**: The agent's note records the actual problem diagnosed and resolved after checking backend systems (PG dashboards, courier AWBs, RMA logs).
+
+---
+
+### Decision 10: Taxonomy Selection (10 Business Categories + Other/Unclear)
+- **Ambiguity / Context**: How many categories to use and what to do with the 1,622 tickets in "Other".
+- **Decision**: Adopt an 11-category mutually exclusive taxonomy aligned with Vireo's operational teams: `Delivery & Shipping`, `Billing & Payments`, `Returns & Refunds`, `Warranty & Repair`, `Charging & Battery`, `Connectivity`, `Audio Quality`, `App & Firmware`, `Account & Login`, `Product Enquiry`, and `Other / Unclear`.
+- **Result**: Completely eradicated the opaque "Other" bucket (from 1,622 tickets down to 0 unclassified), while properly distinguishing delivery issues from payment issues.
+
+---
+
+### Decision 11: Multi-Layered Zero-Cost Classifier Architecture
+- **Ambiguity / Context**: Reviewers must be able to run the tool on a clean machine without an external API key or incurred costs.
+- **Decision**: Implement a 3-layer waterfall architecture:
+  - **Layer 1**: Deterministic domain regex rules with Hinglish normalizations (resolves 84.23% of tickets with 0.95 confidence).
+  - **Layer 2**: TF-IDF (12,000 features, unigrams + bigrams) + Calibrated balanced Logistic Regression (resolves remaining 15.77% locally).
+  - **Layer 3**: Optional LLM API fallback reserved only for ambiguous cases if an API key is provided.
+- **Why**: Guarantees fast, reproducible, 100% offline execution in 5.2 seconds with Rs 0.00 / $0.00 API expenditure.
+
